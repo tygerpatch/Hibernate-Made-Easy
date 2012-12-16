@@ -15,6 +15,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 // Page: 84 Commented out SchemaExport Call
 // Page: 85 Created transient User instance
 // Page: 86 Created SessionFactory object
+// Page: 88 Created Session object
 
 @Entity
 public class User {
@@ -49,9 +50,9 @@ public class User {
 		
 		// The SessionFactory is obtained through the config object
 		SessionFactory factory = config.buildSessionFactory();
+		Session session = factory.getCurrentSession();
 
-		// The User instance is still transient
-		// and not associated  with any Hibernate Session
+		// A session is around, but the User is still transient!
 		User user = new User();
 		user.setPassword("abc123");
 	}
