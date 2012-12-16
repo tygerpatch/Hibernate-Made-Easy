@@ -4,8 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 // Title: Hibernate Made Easy
 // Author: Cameron McKenzie
@@ -14,6 +14,7 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 // Page: 73 Added static main method to User Pojo
 // Page: 84 Commented out SchemaExport Call
 // Page: 85 Created transient User instance
+// Page: 86 Created SessionFactory object
 
 @Entity
 public class User {
@@ -46,11 +47,12 @@ public class User {
 		config.configure();
 		// new SchemaExport(config).create(true, true);
 		
-		// This User instance, u, is completely transient.
-		// Hibernate is not aware of it, nor does Hibernate care about it.
+		// The SessionFactory is obtained through the config object
+		SessionFactory factory = config.buildSessionFactory();
+
+		// The User instance is still transient
+		// and not associated  with any Hibernate Session
 		User user = new User();
 		user.setPassword("abc123");
 	}
 }
-// As the User instance goes out of scope, it is garbage collected,
-// and it's state is not persisted.
