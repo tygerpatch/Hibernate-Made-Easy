@@ -10,6 +10,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 // Title: Hibernate Made Easy
 // Author: Cameron McKenzie
+
 // Page  62 Created User Pojo without JPA Annotations
 // Page: 64 Added JPA Annotation to User Pojo
 // Page: 73 Added static main method to User Pojo
