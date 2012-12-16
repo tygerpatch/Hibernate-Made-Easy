@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
@@ -16,6 +17,8 @@ import org.hibernate.cfg.AnnotationConfiguration;
 // Page: 85 Created transient User instance
 // Page: 86 Created SessionFactory object
 // Page: 88 Created Session object
+// Page: 89 Added begin & end transaction block
+// Page: 90 Able to save a simple POJO to Hibernate
 
 @Entity
 public class User {
@@ -51,9 +54,16 @@ public class User {
 		// The SessionFactory is obtained through the config object
 		SessionFactory factory = config.buildSessionFactory();
 		Session session = factory.getCurrentSession();
+		session.beginTransaction();
 
-		// A session is around, but the User is still transient!
+		// create & initialize your User POJO
 		User user = new User();
 		user.setPassword("abc123");
+		// At this point, the User instance is still transient.
+		// Ask the Session to save your POJO to the db.
+
+		session.saveOrUpdate(user);
+		// At this point, the User instance is considered persistent
+		session.getTransaction().commit();
 	}
 }
