@@ -9,8 +9,11 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 // Title: Hibernate Made Easy
 // Author: Cameron McKenzie
+// Page  62 Created User Pojo without JPA Annotations
 // Page: 64 Added JPA Annotation to User Pojo
 // Page: 73 Added static main method to User Pojo
+// Page: 84 Commented out SchemaExport Call
+// Page: 85 Created transient User instance
 
 @Entity
 public class User {
@@ -41,6 +44,13 @@ public class User {
 		AnnotationConfiguration config = new AnnotationConfiguration();
 		config.addAnnotatedClass(User.class);
 		config.configure();
-		new SchemaExport(config).create(true, true);
+		// new SchemaExport(config).create(true, true);
+		
+		// This User instance, u, is completely transient.
+		// Hibernate is not aware of it, nor does Hibernate care about it.
+		User user = new User();
+		user.setPassword("abc123");
 	}
 }
+// As the User instance goes out of scope, it is garbage collected,
+// and it's state is not persisted.
