@@ -1,5 +1,7 @@
 package com.examscam;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
@@ -14,6 +16,7 @@ import com.examscam.model.User;
 // Page: 127 update getInitializedConfiguration method with reference to future classes
 // Page: 128 recreateDatabase method
 // Page: 128 added static void main method
+// Page: 129 added getSession method
 
 public class HibernateUtil {
 
@@ -45,6 +48,18 @@ public class HibernateUtil {
 
     public static void main(String[] args) {
         HibernateUtil.recreateDatabase();
+    }
+
+    private static SessionFactory factory;
+
+    public static Session getSession() {
+        if (factory == null) {
+            Configuration config = HibernateUtil.getInitializedConfiguration();
+            factory = config.buildSessionFactory();
+        }
+
+        Session hibernateSession = factory.getCurrentSession();
+        return hibernateSession;
     }
 
 }
