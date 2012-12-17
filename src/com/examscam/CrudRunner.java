@@ -120,4 +120,28 @@ public class CrudRunner {
         session.getTransaction().commit();
     }
 
+    public static void deleteAll() {
+        AnnotationConfiguration config = new AnnotationConfiguration();
+        config.addAnnotatedClass(User.class);
+
+        SessionFactory factory = config.configure().buildSessionFactory();
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
+
+        System.out.println("Deleting all records...");
+
+        Query queryResult = session.createQuery("from User");
+        List allUsers = queryResult.list();
+
+        for (int i = 0; i < allUsers.size(); i++) {
+            User user = (User) allUsers.get(i);
+            System.out.println(user);
+            session.delete(user);
+        }
+
+        System.out.println("Database contents deleted...");
+
+        session.getTransaction().commit();
+    }
+
 }
