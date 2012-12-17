@@ -2,6 +2,7 @@ package com.examscam.model;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.Transient;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.MatchMode;
 
 import com.examscam.HibernateUtil;
 
@@ -43,7 +45,8 @@ import com.examscam.HibernateUtil;
 // Page: 190 added Named Query
 // Page: 191 updated main method to use NamedQuery
 // Page: 198 removed main method, added toString method
-// Page: 204 added main method, showcases how to return a single row
+// Page: 204 added main method, showcase how to return a single row
+// Page: 206 updated main method, showcase how to use Like Queries
 
 @Entity
 @Table(name = "user", schema = "examscam")
@@ -145,18 +148,21 @@ public class User {
 
     public static void main(String[] args) {
     	User user = new User();
-    	user.setLoginName("mj");
-    	user.setPassword("abc123");
+    	user.setEmailAddress(".com");
 
     	Example example = Example.create(user);
+    	example.enableLike(MatchMode.END);
 
     	Session session = HibernateUtil.beginTransaction();
 
     	Criteria criteria = session.createCriteria(User.class);
     	criteria.add(example);
 
-    	user = (User) criteria.uniqueResult();
+    	List results = criteria.list();
+    	for(int i = 0; i < results.size(); i++) {
+    		System.out.println(results.get(i).toString());    		
+    	}
 
-    	System.out.print(user);
+    	HibernateUtil.commitTransaction();
     }
 }
