@@ -13,6 +13,7 @@ import com.examscam.model.User;
 // Page: 126 getInitializedConfiguration method
 // Page: 127 update getInitializedConfiguration method with reference to future classes
 // Page: 128 recreateDatabase method
+// Page: 128 added static void main method
 
 public class HibernateUtil {
 
@@ -40,6 +41,10 @@ public class HibernateUtil {
     public static void recreateDatabase() {
         Configuration config = HibernateUtil.getInitializedConfiguration();
         new SchemaExport(config).create(true, true);
+    }
+
+    public static void main(String[] args) {
+        HibernateUtil.recreateDatabase();
     }
 
 }
