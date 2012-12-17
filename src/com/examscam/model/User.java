@@ -41,6 +41,7 @@ import com.examscam.HibernateUtil;
 // Page: 154, 155 updated User class, added emailAddress
 // Page: 190 added Named Query
 // Page: 191 updated main method to use NamedQuery
+// Page: 198 removed main method, added toString method
 
 @Entity
 @Table(name = "user", schema = "examscam")
@@ -136,14 +137,7 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
-	public static void main(String[] args) {
-		String loginName = "mj";
-		Session session = HibernateUtil.beginTransaction();
-		Query query = session.getNamedQuery("user.findByLoginName");
-		query.setString("name", loginName);
-		Object obj = query.uniqueResult();
-		User user = (User)obj;
-		System.out.println(user.getLoginName());
-		HibernateUtil.commitTransaction();
-	}
+    public String toString(){
+        return getId() + " : " + getLoginName() + " : " + getPassword() + " : " + getEmailAddress();
+    }
 }
