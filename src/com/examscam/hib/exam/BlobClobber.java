@@ -16,7 +16,7 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 //Title: Hibernate Made Easy
 //Author: Cameron McKenzie
 
-//Page  62 Created BlobClobber class
+//Page  62 Created BlobClobber class, @Lob annotation
 
 @Entity
 @Table(name = "BlobClobBoBob", schema = "examscam")
