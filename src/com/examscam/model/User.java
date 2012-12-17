@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+import com.examscam.HibernateUtil;
+
 // Title: Hibernate Made Easy
 // Author: Cameron McKenzie
 
@@ -20,6 +22,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 // Page: 88 Created Session object
 // Page: 89 Added begin & end transaction block
 // Page: 90 Able to save a simple POJO to Hibernate
+// Page: 137 updated User to use HibernateUtil
 
 @Entity
 public class User {
@@ -47,15 +50,9 @@ public class User {
 	}
 
 	public static void main(String[] args) {
-		AnnotationConfiguration config = new AnnotationConfiguration();
-		config.addAnnotatedClass(User.class);
-		config.configure();
-		// new SchemaExport(config).create(true, true);
-		
-		// The SessionFactory is obtained through the config object
-		SessionFactory factory = config.buildSessionFactory();
-		Session session = factory.getCurrentSession();
-		session.beginTransaction();
+		Session session = HibernateUtil.beginTransaction();
+
+		System.out.println("creating user");
 
 		// create & initialize your User POJO
 		User user = new User();
@@ -64,7 +61,12 @@ public class User {
 		// Ask the Session to save your POJO to the db.
 
 		session.saveOrUpdate(user);
+
+		System.out.println("user saved");
+		HibernateUtil.commitTransaction();
+
 		// At this point, the User instance is considered persistent
-		session.getTransaction().commit();
+
+		System.out.println("transaction successful");
 	}
 }
