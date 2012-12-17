@@ -19,6 +19,7 @@ import com.examscam.model.User;
 // Page: 129 getSession method
 // Page: 131 beginTransaction method
 // Page: 131 commitTransaction method
+// Page: 131 closeSession method
 
 public class HibernateUtil {
 
@@ -72,5 +73,9 @@ public class HibernateUtil {
 
     public static void commitTransaction() {
         HibernateUtil.getSession().getTransaction().commit();
+    }
+
+    public static void closeSession() {
+        HibernateUtil.getSession().close();
     }
 }
