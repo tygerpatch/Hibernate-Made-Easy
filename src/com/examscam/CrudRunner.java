@@ -16,6 +16,7 @@ import com.examscam.model.User;
 // Page: 102 retrieve method
 // Page: 106 updated retrieve method with console output
 // Page: 112 updateAll method
+// Page: 116 & 117 complete CrudRunner class listing
 
 // CRUD = Create, Read, Update, and Delete
 public class CrudRunner {
@@ -25,6 +26,7 @@ public class CrudRunner {
 		CrudRunner.create();
 		CrudRunner.retrieve();
 		CrudRunner.retrieveFromId(1);
+		CrudRunner.updateAll();
 	}
 
 	public static void create() {
@@ -80,16 +82,20 @@ public class CrudRunner {
 	public static User retrieveFromId(int idValue) {
 		AnnotationConfiguration config = new AnnotationConfiguration();
 		config.addAnnotatedClass(User.class);
+
 		SessionFactory factory = config.configure().buildSessionFactory();
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
+
 		String queryString = "from User where id = :id";
 		Query query = session.createQuery(queryString);
 		query.setInteger("id", idValue);
 		Object queryResult = query.uniqueResult();
 		User user = (User) queryResult;
+
 		session.getTransaction().commit();
 		System.out.print(user.getPassword());
+
 		return user;
 	}
 
