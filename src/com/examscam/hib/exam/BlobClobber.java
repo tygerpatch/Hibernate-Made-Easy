@@ -13,10 +13,10 @@ import javax.persistence.Table;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
-//Title: Hibernate Made Easy
-//Author: Cameron McKenzie
+// Title: Hibernate Made Easy
+// Author: Cameron McKenzie
 
-//Page  62 Created BlobClobber class, @Lob annotation
+// Page: 159 Created BlobClobber class, @Lob annotation
 
 @Entity
 @Table(name = "BlobClobBoBob", schema = "examscam")
