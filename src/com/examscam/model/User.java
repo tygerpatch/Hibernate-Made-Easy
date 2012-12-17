@@ -14,8 +14,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import org.hibernate.Query;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Example;
 
 import com.examscam.HibernateUtil;
 
@@ -42,6 +43,7 @@ import com.examscam.HibernateUtil;
 // Page: 190 added Named Query
 // Page: 191 updated main method to use NamedQuery
 // Page: 198 removed main method, added toString method
+// Page: 204 added main method, showcases how to return a single row
 
 @Entity
 @Table(name = "user", schema = "examscam")
@@ -139,5 +141,22 @@ public class User {
 
     public String toString(){
         return getId() + " : " + getLoginName() + " : " + getPassword() + " : " + getEmailAddress();
+    }
+
+    public static void main(String[] args) {
+    	User user = new User();
+    	user.setLoginName("mj");
+    	user.setPassword("abc123");
+
+    	Example example = Example.create(user);
+
+    	Session session = HibernateUtil.beginTransaction();
+
+    	Criteria criteria = session.createCriteria(User.class);
+    	criteria.add(example);
+
+    	user = (User) criteria.uniqueResult();
+
+    	System.out.print(user);
     }
 }
