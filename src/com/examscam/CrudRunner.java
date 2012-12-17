@@ -14,52 +14,82 @@ import com.examscam.model.User;
 
 // Page: 101 start of CrudRunner class
 // Page: 102 retrieve method
+// Page: 106 updated retrieve method with console output
 
 // CRUD = Create, Read, Update, and Delete
 public class CrudRunner {
 
-    public static void main(String[] args) {
-        // Run all the static methods (currently only 1)
-        CrudRunner.create();
-    }
+	public static void main(String[] args) {
+		// Run all the static methods
+		CrudRunner.create();
+		CrudRunner.retrieve();
+		CrudRunner.retrieveFromId(1);
+	}
 
-    public static void create() {
-        // Create the config object, reading from the hibernate.cfg.xml file.
-        AnnotationConfiguration config = new AnnotationConfiguration();
+	public static void create() {
+		// Create the config object, reading from the hibernate.cfg.xml file.
+		AnnotationConfiguration config = new AnnotationConfiguration();
 
-        // Make sure all annotated classes are added to the configuration.
-        config.addAnnotatedClass(User.class);
-        SessionFactory factory;
+		// Make sure all annotated classes are added to the configuration.
+		config.addAnnotatedClass(User.class);
+		SessionFactory factory;
 
-        // Obtain the SessionFactory after calling the config() method
-        // of the nnotationConfiguration instance.
-        factory = config.configure().buildSessionFactory();
+		// Obtain the SessionFactory after calling the config() method
+		// of the nnotationConfiguration instance.
+		factory = config.configure().buildSessionFactory();
 
-        // Get a Hibernate Session
-        Session session = factory.getCurrentSession();
-        session.beginTransaction();
+		// Get a Hibernate Session
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
 
-        // Create and initialize an instance of a JPA annotated class.
-        User user = new User();
-        user.setPassword("abc123");
+		// Create and initialize an instance of a JPA annotated class.
+		User user = new User();
+		user.setPassword("abc123");
 
-        // Have the instance touch the session and then commit the transaction.
-        session.save(user);
-        session.getTransaction().commit();
-    }
+		// Have the instance touch the session and then commit the transaction.
+		session.save(user);
+		session.getTransaction().commit();
+	}
 
-    public static void retrieve() {
-        AnnotationConfiguration config = new AnnotationConfiguration();
-        config.addAnnotatedClass(User.class);
-        SessionFactory factory = config.configure().buildSessionFactory();
-        Session session = factory.getCurrentSession();
-        session.beginTransaction();
-        Query queryResult = session.createQuery("from User");
-        List allUsers = queryResult.list();
-        for (int i = 0; i < allUsers.size(); i++) {
-            User user = (User) allUsers.get(i);
-        }
-        session.getTransaction().commit();
-    }
+	public static void retrieve() {
+		// your standard Hibernate connection code
+		AnnotationConfiguration config = new AnnotationConfiguration();
+		config.addAnnotatedClass(User.class);
+
+		SessionFactory factory = config.configure().buildSessionFactory();
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+
+		System.out.println("Querying the whole database...");
+
+		Query queryResult = session.createQuery("from User");
+		List allUsers = queryResult.list();
+
+		System.out.println("Number of rows: " + allUsers.size());
+
+		for (int i = 0; i < allUsers.size(); i++) {
+			User user = (User) allUsers.get(i);
+		}
+
+		System.out.println("Database contents delivered...");
+
+		session.getTransaction().commit();
+	}
+
+	public static User retrieveFromId(int idValue) {
+		AnnotationConfiguration config = new AnnotationConfiguration();
+		config.addAnnotatedClass(User.class);
+		SessionFactory factory = config.configure().buildSessionFactory();
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		String queryString = "from User where id = :id";
+		Query query = session.createQuery(queryString);
+		query.setInteger("id", idValue);
+		Object queryResult = query.uniqueResult();
+		User user = (User) queryResult;
+		session.getTransaction().commit();
+		System.out.print(user.getPassword());
+		return user;
+	}
 
 }
