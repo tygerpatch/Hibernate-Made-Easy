@@ -15,8 +15,9 @@ import com.examscam.model.User;
 // Page: 126 getInitializedConfiguration method
 // Page: 127 update getInitializedConfiguration method with reference to future classes
 // Page: 128 recreateDatabase method
-// Page: 128 added static void main method
-// Page: 129 added getSession method
+// Page: 128 static void main method
+// Page: 129 getSession method
+// Page: 131 beginTransaction method
 
 public class HibernateUtil {
 
@@ -59,6 +60,12 @@ public class HibernateUtil {
         }
 
         Session hibernateSession = factory.getCurrentSession();
+        return hibernateSession;
+    }
+
+    public static Session beginTransaction() {
+        Session hibernateSession = HibernateUtil.getSession();
+        hibernateSession.beginTransaction();
         return hibernateSession;
     }
 
