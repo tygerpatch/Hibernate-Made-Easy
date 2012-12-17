@@ -12,7 +12,7 @@ import com.examscam.model.User;
 // Title: Hibernate Made Easy
 // Author: Cameron McKenzie
 
-// Page: 232 created AddUsers class
+// Page: 234 complete AddUsers class
 
 public class AddUsers {
     public static void main(String args[]) {
