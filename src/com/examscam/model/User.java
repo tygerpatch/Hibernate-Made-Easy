@@ -2,18 +2,19 @@ package com.examscam.model;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.examscam.HibernateUtil;
@@ -38,9 +39,12 @@ import com.examscam.HibernateUtil;
 // Page: 150 updated main method to use encryptedPassword property
 // Page: 152, 153 added emailAddress, verified, lastAccessTime, registrationDate fields
 // Page: 154, 155 updated User class, added emailAddress
+// Page: 190 added Named Query
+// Page: 191 updated main method to use NamedQuery
 
 @Entity
 @Table(name = "user", schema = "examscam")
+@NamedQuery(name = "user.findByLoginName", query = "from User where loginName = :name")
 public class User {
 
 	private Long id;
@@ -133,24 +137,13 @@ public class User {
     }
 
 	public static void main(String[] args) {
+		String loginName = "mj";
 		Session session = HibernateUtil.beginTransaction();
-
-		System.out.println("creating user");
-
-		User user = new User();
-		user.setPassword("abc123");
-		user.setLoginName("mj");
-		user.setEncryptedPassword("zab012");
-		user.setEmailAddress("mj@scja.com");
-		user.setLastAccessTime(new Date());
-		user.setRegistrationDate(new GregorianCalendar());
-		user.setVerified(false);
-
-		session.save(user);
-
-		System.out.println("user saved");
+		Query query = session.getNamedQuery("user.findByLoginName");
+		query.setString("name", loginName);
+		Object obj = query.uniqueResult();
+		User user = (User)obj;
+		System.out.println(user.getLoginName());
 		HibernateUtil.commitTransaction();
-
-		System.out.println("transaction successful");
 	}
 }
