@@ -1,12 +1,11 @@
 package com.examscam.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
 
 import com.examscam.HibernateUtil;
 
@@ -23,6 +22,8 @@ import com.examscam.HibernateUtil;
 // Page: 89 Added begin & end transaction block
 // Page: 90 Able to save a simple POJO to Hibernate
 // Page: 137 updated User to use HibernateUtil
+// Page: 141 added loginName property
+// Page: 142 updated main method to use loginName
 
 @Entity
 public class User {
@@ -49,23 +50,30 @@ public class User {
 		this.password = password;
 	}
 
+	private String loginName;
+
+	@Column(name = "login_name")
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(String loginName){
+		this.loginName = loginName;
+	}
+
 	public static void main(String[] args) {
 		Session session = HibernateUtil.beginTransaction();
 
 		System.out.println("creating user");
 
-		// create & initialize your User POJO
 		User user = new User();
 		user.setPassword("abc123");
-		// At this point, the User instance is still transient.
-		// Ask the Session to save your POJO to the db.
+		user.setLoginName("mj");
 
-		session.saveOrUpdate(user);
+		session.save(user);
 
 		System.out.println("user saved");
 		HibernateUtil.commitTransaction();
-
-		// At this point, the User instance is considered persistent
 
 		System.out.println("transaction successful");
 	}
