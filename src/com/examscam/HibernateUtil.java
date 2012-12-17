@@ -2,6 +2,7 @@ package com.examscam;
 
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 import com.examscam.model.User;
 
@@ -11,6 +12,7 @@ import com.examscam.model.User;
 // Page: 126 start of HibernateUtil
 // Page: 126 getInitializedConfiguration method
 // Page: 127 update getInitializedConfiguration method with reference to future classes
+// Page: 128 recreateDatabase method
 
 public class HibernateUtil {
 
@@ -33,6 +35,11 @@ public class HibernateUtil {
 
         config.configure();
         return config;
+    }
+
+    public static void recreateDatabase() {
+        Configuration config = HibernateUtil.getInitializedConfiguration();
+        new SchemaExport(config).create(true, true);
     }
 
 }
