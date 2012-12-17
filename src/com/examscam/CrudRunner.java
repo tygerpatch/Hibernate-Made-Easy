@@ -1,5 +1,8 @@
 package com.examscam;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -9,7 +12,8 @@ import com.examscam.model.User;
 // Title: Hibernate Made Easy
 // Author: Cameron McKenzie
 
-// Page: 101
+// Page: 101 start of CrudRunner class
+// Page: 102 retrieve method
 
 // CRUD = Create, Read, Update, and Delete
 public class CrudRunner {
@@ -43,4 +47,19 @@ public class CrudRunner {
         session.save(user);
         session.getTransaction().commit();
     }
+
+    public static void retrieve() {
+        AnnotationConfiguration config = new AnnotationConfiguration();
+        config.addAnnotatedClass(User.class);
+        SessionFactory factory = config.configure().buildSessionFactory();
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
+        Query queryResult = session.createQuery("from User");
+        List allUsers = queryResult.list();
+        for (int i = 0; i < allUsers.size(); i++) {
+            User user = (User) allUsers.get(i);
+        }
+        session.getTransaction().commit();
+    }
+
 }
