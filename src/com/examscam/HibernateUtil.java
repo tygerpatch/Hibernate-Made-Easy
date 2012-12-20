@@ -8,6 +8,7 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 import com.examscam.mappings.FooBar;
 import com.examscam.mappings.Snafu;
+import com.examscam.mappings.Thing;
 import com.examscam.model.User;
 
 // Title: Hibernate Made Easy
@@ -25,6 +26,7 @@ import com.examscam.model.User;
 // Page: 133 rollbackTransaction
 // Page: 268 uncommented line adding Snafu to AnnotationConfiguration object
 // Page: 279 uncommented line adding FooBar to AnnotationConfiguration object
+// Page: 288 uncommented line adding Thing to AnnotationConfiguration object
 
 public class HibernateUtil {
 
@@ -39,7 +41,7 @@ public class HibernateUtil {
 
         config.addAnnotatedClass(Snafu.class);
         config.addAnnotatedClass(FooBar.class);
-        //config.addAnnotatedClass(Thing.class);
+        config.addAnnotatedClass(Thing.class);
         //config.addAnnotatedClass(Team.class);
         //config.addAnnotatedClass(Player.class);
         //config.addAnnotatedClass(RightManyCourse.class);
