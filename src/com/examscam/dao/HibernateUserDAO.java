@@ -70,7 +70,7 @@ public class HibernateUserDAO extends ExamScamDAO implements UserDAO {
 
 	@Override
 	public List findAll() {
-		String queryString = "fromUser";
+		String queryString = "from User";
 		// java.lang.IllegalArgumentException: node to traverse cannot be null!
 		Query queryResult = this.getSession().createQuery(queryString);
 		return queryResult.list();
