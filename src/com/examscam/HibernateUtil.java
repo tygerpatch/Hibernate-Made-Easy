@@ -6,6 +6,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
+import com.examscam.mappings.FooBar;
 import com.examscam.mappings.Snafu;
 import com.examscam.model.User;
 
@@ -22,7 +23,8 @@ import com.examscam.model.User;
 // Page: 131 commitTransaction method
 // Page: 132 closeSession method
 // Page: 133 rollbackTransaction
-// Page: 268 uncomment line adding Snafu to AnnotationConfiguration object
+// Page: 268 uncommented line adding Snafu to AnnotationConfiguration object
+// Page: 279 uncommented line adding FooBar to AnnotationConfiguration object
 
 public class HibernateUtil {
 
@@ -36,7 +38,7 @@ public class HibernateUtil {
         // Keep them commented out for now.
 
         config.addAnnotatedClass(Snafu.class);
-        //config.addAnnotatedClass(FooBar.class);
+        config.addAnnotatedClass(FooBar.class);
         //config.addAnnotatedClass(Thing.class);
         //config.addAnnotatedClass(Team.class);
         //config.addAnnotatedClass(Player.class);
