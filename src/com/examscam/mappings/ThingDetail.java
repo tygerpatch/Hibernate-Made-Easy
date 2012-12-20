@@ -1,10 +1,14 @@
 package com.examscam.mappings;
 
+import javax.persistence.Embeddable;
+
 // Title: Hibernate Made Easy
 // Author: Cameron McKenzie
 
 // Page: 283 created unannotated ThingDetail class
+// Page: 284 added Embeddable annotation
 
+@Embeddable
 public class ThingDetail {
 
     private String alias;

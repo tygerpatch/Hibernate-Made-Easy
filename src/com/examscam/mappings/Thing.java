@@ -1,11 +1,18 @@
 package com.examscam.mappings;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 
 // Title: Hibernate Made Easy
 // Author: Cameron McKenzie
 
 // Page: 282 created unannotated Thing class
+// Page: 285 annotated Thing class
 
+@Entity
 public class Thing {
 
     private long id;
@@ -14,6 +21,7 @@ public class Thing {
     /* A Thing has-a ThingDetail as an instance variable. */
     private ThingDetail thingDetail;
 
+    @Embedded
     public ThingDetail getThingDetail() {
         return thingDetail;
     }
@@ -23,6 +31,9 @@ public class Thing {
     }
 
     /* The prinmary key id is defined only in the Thing class */
+
+    @Id
+    @GeneratedValue
     public long getId() {
         return id;
     }
