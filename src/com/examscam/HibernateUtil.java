@@ -6,6 +6,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
+import com.examscam.mappings.Snafu;
 import com.examscam.model.User;
 
 // Title: Hibernate Made Easy
@@ -21,6 +22,7 @@ import com.examscam.model.User;
 // Page: 131 commitTransaction method
 // Page: 132 closeSession method
 // Page: 133 rollbackTransaction
+// Page: 268 uncomment line adding Snafu to AnnotationConfiguration object
 
 public class HibernateUtil {
 
@@ -33,7 +35,7 @@ public class HibernateUtil {
         // Future classes we will be creating.
         // Keep them commented out for now.
 
-        //config.addAnnotatedClass(Snafu.class);
+        config.addAnnotatedClass(Snafu.class);
         //config.addAnnotatedClass(FooBar.class);
         //config.addAnnotatedClass(Thing.class);
         //config.addAnnotatedClass(Team.class);
