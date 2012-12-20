@@ -56,11 +56,14 @@ public class FooBar {
         
     public static void main(String[] args){
         HibernateUtil.recreateDatabase();
+
         FooBar fb = new FooBar();
         fb.setBarCode("90210");
         fb.setFooName("ManChu");
+
         Session session = HibernateUtil.beginTransaction();
         session.save(fb);
+
         HibernateUtil.commitTransaction();
     }
 }
