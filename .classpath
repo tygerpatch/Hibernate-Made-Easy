@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Custom">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Java">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
@@ -13,7 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Java/mysql-connector-j.jar"/>
 	<classpathentry kind="lib" path="C:/Java/hibernate/lib/required/antlr-2.7.7.jar"/>
 	<classpathentry kind="lib" path="C:/Java/hibernate/lib/required/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="C:/Java/hibernate/lib/required/hibernate-commons-annotations-4.0.1.Final.jar"/>
@@ -22,5 +21,6 @@
 	<classpathentry kind="lib" path="C:/Java/hibernate/lib/required/javassist-3.15.0-GA.jar"/>
 	<classpathentry kind="lib" path="C:/Java/hibernate/lib/required/jboss-logging-3.1.0.GA.jar"/>
 	<classpathentry kind="lib" path="C:/Java/hibernate/lib/required/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Java/mysql-connector-j.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
