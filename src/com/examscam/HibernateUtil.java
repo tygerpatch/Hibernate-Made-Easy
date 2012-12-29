@@ -12,8 +12,10 @@ import com.examscam.mappings.Child;
 import com.examscam.mappings.FooBar;
 import com.examscam.mappings.Fracture;
 import com.examscam.mappings.Interest;
+import com.examscam.mappings.LeftManyStudent;
 import com.examscam.mappings.Player;
 import com.examscam.mappings.Prison;
+import com.examscam.mappings.RightManyCourse;
 import com.examscam.mappings.Snafu;
 import com.examscam.mappings.Team;
 import com.examscam.mappings.Thing;
@@ -38,6 +40,7 @@ import com.examscam.model.User;
 // Page: 300 added Interest class to AnnotationConfiguration object
 // Page: 303 added Fracture class to AnnotationConfiguration object
 // Page: 305 added Prison class to AnnotationConfiguration object
+// Page: 360 added LeftManyStudent and RightManyCourse classes to AnnotationConfiguration object
 
 public class HibernateUtil {
 
@@ -61,8 +64,8 @@ public class HibernateUtil {
         config.addAnnotatedClass(ExamDetail.class);
         config.addAnnotatedClass(Team.class);
         config.addAnnotatedClass(Player.class);
-        //config.addAnnotatedClass(RightManyCourse.class);
-        //config.addAnnotatedClass(LeftManyStudent.class);
+        config.addAnnotatedClass(RightManyCourse.class);
+        config.addAnnotatedClass(LeftManyStudent.class);
 
         config.configure();
         return config;
