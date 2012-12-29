@@ -6,6 +6,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
+import com.examscam.mappings.Child;
 import com.examscam.mappings.FooBar;
 import com.examscam.mappings.Fracture;
 import com.examscam.mappings.Interest;
@@ -51,6 +52,8 @@ public class HibernateUtil {
         config.addAnnotatedClass(Interest.class);
         config.addAnnotatedClass(Fracture.class);
         config.addAnnotatedClass(Prison.class);
+        config.addAnnotatedClass(Child.class);
+
         //config.addAnnotatedClass(Team.class);
         //config.addAnnotatedClass(Player.class);
         //config.addAnnotatedClass(RightManyCourse.class);
