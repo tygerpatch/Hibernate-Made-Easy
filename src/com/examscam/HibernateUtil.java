@@ -7,6 +7,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 import com.examscam.mappings.FooBar;
+import com.examscam.mappings.Fracture;
+import com.examscam.mappings.Interest;
+import com.examscam.mappings.Prison;
 import com.examscam.mappings.Snafu;
 import com.examscam.mappings.Thing;
 import com.examscam.model.User;
@@ -27,6 +30,9 @@ import com.examscam.model.User;
 // Page: 268 uncommented line adding Snafu to AnnotationConfiguration object
 // Page: 279 uncommented line adding FooBar to AnnotationConfiguration object
 // Page: 288 uncommented line adding Thing to AnnotationConfiguration object
+// Page: 300 added Interest class to AnnotationConfiguration object
+// Page: 303 added Fracture class to AnnotationConfiguration object
+// Page: 305 added Prison class to AnnotationConfiguration object
 
 public class HibernateUtil {
 
@@ -42,6 +48,9 @@ public class HibernateUtil {
         config.addAnnotatedClass(Snafu.class);
         config.addAnnotatedClass(FooBar.class);
         config.addAnnotatedClass(Thing.class);
+        config.addAnnotatedClass(Interest.class);
+        config.addAnnotatedClass(Fracture.class);
+        config.addAnnotatedClass(Prison.class);
         //config.addAnnotatedClass(Team.class);
         //config.addAnnotatedClass(Player.class);
         //config.addAnnotatedClass(RightManyCourse.class);
