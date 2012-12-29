@@ -12,8 +12,10 @@ import com.examscam.mappings.Child;
 import com.examscam.mappings.FooBar;
 import com.examscam.mappings.Fracture;
 import com.examscam.mappings.Interest;
+import com.examscam.mappings.Player;
 import com.examscam.mappings.Prison;
 import com.examscam.mappings.Snafu;
+import com.examscam.mappings.Team;
 import com.examscam.mappings.Thing;
 import com.examscam.model.User;
 
@@ -57,9 +59,8 @@ public class HibernateUtil {
         config.addAnnotatedClass(Child.class);
         config.addAnnotatedClass(Exam.class);
         config.addAnnotatedClass(ExamDetail.class);
-
-        //config.addAnnotatedClass(Team.class);
-        //config.addAnnotatedClass(Player.class);
+        config.addAnnotatedClass(Team.class);
+        config.addAnnotatedClass(Player.class);
         //config.addAnnotatedClass(RightManyCourse.class);
         //config.addAnnotatedClass(LeftManyStudent.class);
 
