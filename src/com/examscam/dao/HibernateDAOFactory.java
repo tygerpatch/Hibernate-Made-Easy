@@ -5,7 +5,7 @@ package com.examscam.dao;
 
 // Page: 403 created HibernateDAOFactory class
 
-public class HibernateDAOFactory {
+public class HibernateDAOFactory extends DAOFactory {
 	public ClientDAO getClientDAO() {
 		return new HibernateClientDAO();
 	}
