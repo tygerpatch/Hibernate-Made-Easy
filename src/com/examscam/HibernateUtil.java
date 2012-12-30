@@ -19,6 +19,10 @@ import com.examscam.mappings.RightManyCourse;
 import com.examscam.mappings.Snafu;
 import com.examscam.mappings.Team;
 import com.examscam.mappings.Thing;
+import com.examscam.model.Address;
+import com.examscam.model.Client;
+import com.examscam.model.ClientDetail;
+import com.examscam.model.Skill;
 import com.examscam.model.User;
 
 // Title: Hibernate Made Easy
@@ -41,6 +45,7 @@ import com.examscam.model.User;
 // Page: 303 added Fracture class to AnnotationConfiguration object
 // Page: 305 added Prison class to AnnotationConfiguration object
 // Page: 360 added LeftManyStudent and RightManyCourse classes to AnnotationConfiguration object
+// Page: 384 added the following classes to AnnotationConfiguration object : Client, ClientDetail, Address, Skill
 
 public class HibernateUtil {
 
@@ -66,6 +71,10 @@ public class HibernateUtil {
         config.addAnnotatedClass(Player.class);
         config.addAnnotatedClass(RightManyCourse.class);
         config.addAnnotatedClass(LeftManyStudent.class);
+        config.addAnnotatedClass(Client.class);
+        config.addAnnotatedClass(ClientDetail.class);
+        config.addAnnotatedClass(Address.class);
+        config.addAnnotatedClass(Skill.class);
 
         config.configure();
         return config;
