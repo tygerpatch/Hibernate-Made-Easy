@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <!--
@@ -7,7 +6,7 @@
 	Author: Cameron McKenzie
 	Page: 256-258 complete user.jsp 
  -->
- 
+
 <%@page import="org.hibernate.*, com.examscam.HibernateUtil, com.examscam.dao.UserDAO, com.examscam.dao.HibernateUserDAO, java.util.List" %>
 
 <jsp:useBean class="com.examscam.model.User" id="user" scope="request" />
@@ -53,7 +52,7 @@
 	request.setAttribute("users", users);
 	HibernateUtil.commitTransaction();
 %>
- 
+
 <html>
 	<body>
 		<form action="user.jsp">
@@ -62,14 +61,14 @@
 			<input type="text" size="30" name="loginName" value="${user.loginName}">Name<br /> 
 			<input type="text" size="30" name="password" value="${user.password}">Password<br />
 			<input type="text" size="30" name="emailAddress" value="${user.emailAddress}">Email<br />
-			
+
 			<!-- Here are all of our buttons!!! -->
 			<input type="submit" name="command" value="Strict Search"> 
 			<input type="submit" name="command" value="Fuzzy Search"> 
 			<input type="submit" name="command" value="Update"> 
 			<input type="submit" name="command" value="Create"> 
 			<input type="submit" name="command" value="Clear"><br />
-	
+
 			<c:forEach items="${users}" var="user">
 				<c:url var="editurl" value="user.jsp">
 					<c:param name="command" value="edit" />
@@ -85,7 +84,7 @@
 	                | <c:out value="${user.loginName}" />
 	                | <c:out value="${user.emailAddress}" /> 
 	                | <br />
-			</c:forEach>				
+			</c:forEach>
 		</form>
 	</body>
 </html>
