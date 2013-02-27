@@ -6,7 +6,7 @@ import org.hibernate.HibernateException;
 
 import com.examscam.HibernateUtil;
 import com.examscam.dao.HibernateUserDAO;
-import com.examscam.dao.UserDAO;
+import com.examscam.dao.interfaces.UserDAO;
 import com.examscam.model.User;
 
 // Title: Hibernate Made Easy

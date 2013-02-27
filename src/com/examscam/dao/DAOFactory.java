@@ -1,5 +1,10 @@
 package com.examscam.dao;
 
+import com.examscam.dao.interfaces.AddressDAO;
+import com.examscam.dao.interfaces.ClientDAO;
+import com.examscam.dao.interfaces.ClientDetailDAO;
+import com.examscam.dao.interfaces.SkillDAO;
+
 // Title: Hibernate Made Easy
 // Author: Cameron McKenzie
 

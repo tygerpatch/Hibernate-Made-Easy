@@ -7,7 +7,7 @@
 	Page: 256-258 complete user.jsp 
  -->
 
-<%@page import="org.hibernate.*, com.examscam.HibernateUtil, com.examscam.dao.UserDAO, com.examscam.dao.HibernateUserDAO, java.util.List" %>
+<%@page import="org.hibernate.*, com.examscam.HibernateUtil,com.examscam.dao.interfaces.UserDAO, com.examscam.dao.HibernateUserDAO, java.util.List" %>
 
 <jsp:useBean class="com.examscam.model.User" id="user" scope="request" />
 <jsp:setProperty name="user" property="*" />
